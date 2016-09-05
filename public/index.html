@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>To-Do App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+  </head>
+  <body ng-app="todoListApp">
+
+    <h1>My ToDOs!</h1>
+    <div ng-controller="mainCtrl" class="list" >
+
+      <div class="add">
+        <a href="#" ng-click="addTodo()">+ Add a New Task</a>
+      </div>
+
+      <div class="item" ng-class="{'editing-item': editing, 'edited': todo.edited}" ng-repeat="todo in todos">
+
+        <input ng-model="todo.completed" type="checkbox" />
+        <label ng-hide="editing" class="editing-label">{{todo.name}}</label>
+        <input ng-change="todo.edited = true" ng-blur="editing = false;" ng-show="editing" ng-model="todo.name" type="text" class="editing-label" />
+        <div class="actions">
+          <a href="#" ng-click="editing = !editing">Edit</a>
+          <a href="#" ng-click="saveTodo(todo)">Save</a>
+          <a href="#" ng-click="deleteTodo(todo. $index)" class="delete">delete</a>
+        </div>
+      </div>
+      {{todos}}
+    </div>
+
+  <script type="text/javascript" src="scripts/todo.js"></script>
+
+  </body>
+</html>
